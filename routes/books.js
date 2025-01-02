@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const router = express.Router();
 
-const dataFilePath = path.join(__dirname, "../data/books.json");
+const dataFilePath = path.join(__dirname, "../testing_api_2/data/books.json");
 
 const readBooksData = () => JSON.parse(fs.readFileSync(dataFilePath));
 const writeBooksData = (data) =>
