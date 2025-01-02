@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "id": "6",
+    "title": "Mastering Express.js",
+    "content": "Learn how to build powerful backend APIs with Express.js.",
+    "author": "Chris Walker",
+    "created_at": "2025-01-02T10:00:00Z"
+  },
+  {
+    "id": "7",
+    "title": "Mastering Express.js",
+    "content": "Learn how to build powerful backend APIs with Express.js.",
+    "author": "Chris Walker",
+    "created_at": "2025-01-02T10:00:00Z"
+  },
+  {
+    "id": "8",
+    "title": "Mastering Express.js",
+    "content": "Learn how to build powerful backend APIs with Express.js.",
+    "author": "Chris Walker",
+    "created_at": "2025-01-02T10:00:00Z"
+  },
+  {
+    "id": "9",
+    "title": "Mastering Express.js",
+    "content": "Learn how to build powerful backend APIs with Express.js.",
+    "author": "Chris Walker",
+    "created_at": "2025-01-02T10:00:00Z"
+  },
+  {
+    "id": "6",
+    "title": "Mastering Express.js",
+    "content": "Learn how to build powerful backend APIs with Express.js.",
+    "author": "Chris Walker",
+    "created_at": "2025-01-02T10:00:00Z"
+  },
+  {
+    "id": "10",
+    "title": "Mastering Express.js",
+    "content": "Learn how to build powerful backend APIs with Express.js.",
+    "author": "Chris Walker",
+    "created_at": "2025-01-02T10:00:00Z"
+  }
+]

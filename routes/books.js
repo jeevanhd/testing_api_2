@@ -3,9 +3,9 @@ const fs = require("fs");
 const path = require("path");
 const router = express.Router();
 
-const dataFilePath = path.join(__dirname, "../testing_api_2/data/books.json");
+const dataFilePath = path.join(__dirname, "../data/books.json");
 
-const readBooksData = () => JSON.parse(fs.readFileSync(dataFilePath));
+const readBooksData = () => JSON.parse(fs.readFileSync(dataFilePath, "utf-8"));
 const writeBooksData = (data) =>
   fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
 
@@ -13,7 +13,9 @@ router.post("/", (req, res) => {
   const newBook = req.body;
   const books = readBooksData();
 
-  if (books.some((book) => book.book_id === newBook.book_id)) {
+  if (
+    books.some((book) => parseInt(book.id, 10) === parseInt(newBook.id, 10))
+  ) {
     res.status(400).send({ message: "Book ID already exists" });
   }
   books.push(newBook);
@@ -28,7 +30,9 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   const books = readBooksData();
-  const book = books.find((b) => b.book_id === req.params.id);
+  const book = books.find(
+    (b) => parseInt(b.id, 10) === parseInt(req.params.id, 10)
+  );
 
   if (!book) {
     res.status(404).send({ message: "Book not found" });
@@ -38,7 +42,9 @@ router.get("/:id", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const books = readBooksData();
-  const bookIndex = books.findIndex((b) => b.book_id === req.params.id);
+  const bookIndex = books.findIndex(
+    (b) => parseInt(b.id, 10) === parseInt(req.params.id, 10)
+  );
   if (bookIndex === -1) {
     res.status(404).send({ message: "Book not found" });
   }
@@ -50,7 +56,9 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   const books = readBooksData();
-  const updatedBooks = books.filter((b) => b.book_id !== req.params.id);
+  const updatedBooks = books.filter(
+    (b) => parseInt(b.id, 10) !== parseInt(req.params.id, 10)
+  );
 
   if (books.length === updatedBooks.length) {
     return res.status(404).json({ error: "Book not found." });
