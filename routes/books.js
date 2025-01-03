@@ -43,8 +43,14 @@ router.get("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
   const books = readBooksData();
   const bookIndex = books.findIndex(
-    (b) => parseInt(b.id, 10) === parseInt(req.params.id, 10)
+    (b) => parseInt(b.id) === parseInt(req.params.id, 10)
   );
+
+  const { title, content, author } = req.body;
+  if (!title || !content || !author) {
+    return res.status(400).send({ message: "Missing required fields" });
+  }
+
   if (bookIndex === -1) {
     res.status(404).send({ message: "Book not found" });
   }
